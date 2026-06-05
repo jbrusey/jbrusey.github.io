@@ -1,6 +1,7 @@
 ---
-layout: page
+layout: archive
 title: Blog
+author_profile: true
 permalink: /blog/
 ---
 

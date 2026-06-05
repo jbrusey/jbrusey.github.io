@@ -3,13 +3,17 @@ description: Professor of Computer Science
 url: "https://jbrusey.github.io"
 baseurl: ""
 
-theme: minima
-
-author:
-  name: James Brusey
-
-markdown: kramdown
+remote_theme: "mmistakes/minimal-mistakes"
+minimal_mistakes_skin: "dark"
 
 plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
   - jekyll-feed
   - jekyll-seo-tag
+
+author:
+  name: "James Brusey"
+  bio: "Professor of Computer Science"
+
+markdown: kramdown
