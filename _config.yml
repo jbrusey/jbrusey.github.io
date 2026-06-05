@@ -1,0 +1,15 @@
+title: James Brusey
+description: Professor of Computer Science
+url: "https://jbrusey.github.io"
+baseurl: ""
+
+theme: minima
+
+author:
+  name: James Brusey
+
+markdown: kramdown
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
