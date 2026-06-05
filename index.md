@@ -21,4 +21,10 @@ I work on artificial intelligence, cyber-physical systems, machine learning, sen
 
 ## Recent posts
 
-Posts will appear here once the Jekyll theme is configured to show them, or they can be listed manually.
+{% for post in site.posts limit:5 %}
+- [{{ post.title }}]({{ post.url | relative_url }}) — {{ post.date | date: "%-d %B %Y" }}
+{% else %}
+- No posts yet.
+{% endfor %}
+
+[View all posts](/blog/)
