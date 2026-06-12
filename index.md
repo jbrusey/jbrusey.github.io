@@ -13,7 +13,7 @@ I work on artificial intelligence, cyber-physical systems, machine learning, sen
 
 ## Sections
 
-- [Blog](/blog/)
+- [Blog](/bloglist/)
 - [Projects](/projects/)
 - [Publications](/publications/)
 - [Teaching](/teaching/)
@@ -27,4 +27,4 @@ I work on artificial intelligence, cyber-physical systems, machine learning, sen
 - No posts yet.
 {% endfor %}
 
-[View all posts](/blog/)
+[View all posts](/bloglist/)
