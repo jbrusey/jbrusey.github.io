@@ -7,6 +7,8 @@ classes: wide
 
 # James Brusey
 
+![James Brusey](/assets/images/james-brusey.jpeg){: .align-right width="240" }
+
 Professor of Computer Science.
 
 I work on artificial intelligence, cyber-physical systems, machine learning, sensing, optimisation, and applied data science.
