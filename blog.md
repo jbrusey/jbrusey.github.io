@@ -2,7 +2,7 @@
 layout: archive
 title: Blog Test
 author_profile: true
-permalink: /blog1/
+permalink: /blog/
 ---
 
 {% for post in site.posts %}
