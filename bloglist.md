@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: Blog Test
+title: Blog
 author_profile: true
 permalink: /bloglist/
 ---
