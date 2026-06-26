@@ -11,15 +11,15 @@ categories: ["research"]
 permalink: "/2026/06/16/the-miracle-of-auto-research"
 ---
 
-## tldr
+## TL;DR
 
-Andrej Karpathy set out the idea of "Auto Research" in a [github site](https://github.com/karpathy/autoresearch) and spawned a thousand forks (actually more than 12 thousand to date).
+Andrej Karpathy set out the idea of "Auto Research" in a [GitHub site](https://github.com/karpathy/autoresearch) and spawned a thousand forks (actually more than 12 thousand to date).
 While he was applying to the tuning of a neural network, he admitted the generality of the approach.
-The key principles of Auto Research include
+The key principles of auto-research include
   1. Have a well-defined scoring function
   2. Limit to 5 minute runs
   3. Constrain what the AI can modify
-  3. Keep it simple.
+  4. Keep it simple.
 
 ## Opening: The miracle
 
@@ -33,7 +33,7 @@ If it's enabled by better models, it is also enabled by the rise of the command 
 
 ## What Karpathy contributed
 
-A quick summary of the Auto-Research approach is as follows:
+A quick summary of the auto-research approach is as follows:
   1. define a measurable target;
   2. constrain what the agent can change;
   3. run short experiments; 
@@ -50,7 +50,7 @@ Markdown is a natural language for talking to agents as it is close to raw text 
 Many modern editors support Markdown, including VS Code and Obsidian. 
 
 I should mention here that we are working with an agent that *can* read a file on your hard disk. It does this by using a local Command Line Interface or CLI (such as, Claude Code, Codex, or Gemini CLI). Open source variants include OpenCode and Pi (my personal favourite). 
-Note that the CLI does not necessarily constrain what LLM model is used at the back end. For example, it is possible to use a model that sits on your own laptop if you like (although for this job you really need the intellectual power of a big model like Codex). 
+Note that the CLI does not necessarily constrain what LLM model is used at the back end. For example, it is possible to use a model that sits on your own laptop if you like (although for this job I found a stronger model made a real difference).
 
 The best way to talk about how to make use of Karpathy's contribution is to explain how I made use of it as this allows us to discuss how to change the approach to suit a new problem. 
 
@@ -67,7 +67,7 @@ There are lots of possible variables and it is hard to know which ones to select
 
 ## Scoring is the hard part
 
-For Auto-Research, and possibly any sort of research, we need to start by saying what "good" looks like. 
+For auto-research, and possibly any sort of research, we need to start by saying what "good" looks like. 
 Past work used a measure called Root Mean Squared Error (RMSE), with a lower RMSE being better. 
 The logic behind RMSE is that squaring the error makes it positive; we have lots of individual errors over an episode, so we take the mean; and taking the square root returns the value to the same units that we started with. 
 When judging the quality of a Kalman Filter, though, the average error is not really the whole story. 
@@ -76,62 +76,78 @@ The first problem is that we could improve the score greatly by chopping up our 
 The second problem is that a Kalman Filter gives an uncertainty estimate as well as a value---but how good is that uncertainty estimate? 
 In the field of core temperature estimation, uncertainty is universally ignored---which is a pity because it is critical in deciding between definitely at a safe core temperature and maybe at risk of exceeding a safe level. 
 So for our work, we use well-defined episode lengths and an aggregate score that includes factors for RMSE and uncertainty quality. 
-The point is, choosing the metric or scoring method is one of the most important (and perhaps most difficult) parts of the Auto Research process. 
+The point is, choosing the metric or scoring method is one of the most important (and perhaps most difficult) parts of the auto-research process. 
 
 ## Provide evaluation code
 
 The next step is to provide evaluation code. 
-- Your agent will be of great help here. 
-- In my case, I just gave it my scoring equation and asked it to revise the existing EKF evaluation code to only output that one value. 
-- I'd like to say that I yearn for the days of yore when I had to carefully hand-code, debug, write test cases, and so forth but it wouldn't be true. 
+Your agent will be of great help here. 
+In my case, I just gave it my scoring equation and asked it to revise the existing EKF evaluation code to only output that one value. 
+I'd like to say that I yearn for the days of yore when I had to carefully hand-code, debug, write test cases, and so forth.
+In any case, I suspect that, for many teams, converting existing code to give the summary score (and nothing else) will be as straightforward as it was for me.
 
 ## Formulate the `program.md`
 
-- Finally, we need to create a revised "program". 
-- Karpathy's [original contract](https://github.com/karpathy/autoresearch/blob/master/program.md) can form the basis, but, together with your AI, revise to suit your problem. 
-- Start by looking through and working out what *sorts* of things need to be changed.
-- One thing I wanted to do was to make use of remote servers and so I included instructions on how to use `ssh` to get to those servers. 
+Finally, we need to create a revised "program" or script to give the agent. 
+Karpathy's [original contract](https://github.com/karpathy/autoresearch/blob/master/program.md) can form the basis, but, together with your AI, revise to suit your problem. 
+Start by looking through and working out what *sorts* of things need to be changed.
+One thing I wanted to do was to make use of remote servers and so I included instructions on how to use `ssh` to get to those servers. I will discuss this aspect more later on as it turned out to be a critical aspect. 
 
 ## Using git as a ratchet mechanism
 
-- A ratchet is a device you've probably used when trying to fix a sofa you bought second hand to the roof of your car. 
-- It works by having a tape that feeds onto a spool with a ratchet mechanism that only allows the tape to tighten and not loosen, allowing you to get that binding tape to hold the sofa really tightly. 
-- `program.md` works the same but using git. Each new experiment is committed but when the results come back, a poorer result is reverted while a better result is kept. 
-- There is also a small penalty for complexity. If the improvement is slight but the original is simpler, then the new version is still reverted. 
+A ratchet is a device you've probably used when trying to fix a sofa you bought second hand to the roof of your car. 
+It works by having a tape that feeds onto a spool with a ratchet mechanism that only allows the tape to tighten and not loosen, allowing you to get that binding tape to hold the sofa really tightly. 
+`program.md` works the same but using git. Each new experiment is committed but when the results come back, a poorer result is reverted while a better result is kept. 
+There is also a penalty for complexity. If the improvement is slight but the original is simpler, then the new version is still reverted. 
 
 ## Does it work?
 
-- So with all this put together, it might sound like it would work immediately. 
-- I found, however, that Codex was reluctant to follow the instructions without a lot of hand holding. 
-- Fortunately, I discovered the `yolo` option (you only live once), which makes Codex much more relaxed. Other agents, such as Pi, are `yolo` by default. 
-- The next problem I discovered is that it spent all its time making small changes to parameters, sometimes useful, sometimes not. All this for minor gain.
-- In addition, whenever it tried to change the *structure* of the filter significantly, the parameter that worked well with the old structure would tend to be suboptimal for the new one and it would instantly discard this as a possible path. 
-- To head that off, I instructed it to do a numerical optimisation each time. If the parameters are already optimised, the agent can't pretend it's doing useful work by tweaking a parameter or two. More importantly, structural changes could be made and tested more effectively. 
-- This issue with Auto Research not being able to get out of local minima is one that Karpathy noted in his original blog post. While adding in the numerical optimiser helps, it doesn't completely solve the problem. 
-- A further problem that I found is that, when left to its own devices, Auto Research can be a bit undirected or can go back and forth over similar unproductive variants. 
-- To help with this, I asked it to produce a list of ideas, write them to a file, and then explore them one by one. 
+So with all this put together, it might sound like it would work immediately. 
+I found, however, that Codex was reluctant to follow the instructions without a lot of hand holding. 
+Fortunately, I discovered the `yolo` option (you only live once), which makes Codex much more relaxed. Other agents, such as Pi, are `yolo` by default. 
+
+The next problem I discovered is that it spent all its time making small changes to numerical parameters, sometimes useful, sometimes not. All this for minor gain.
+In addition, whenever it tried to change the *structure* of the filter significantly, the parameter set that worked well with the old structure tended to be suboptimal for the new one and it would instantly discard any structure change as a possible path. 
+
+To head that off, I instructed it to do a numerical optimisation each time. If the parameters are already optimised, the agent can't pretend it's doing useful work by tweaking a parameter or two. More importantly, structural changes could be made and tested more effectively. 
+This issue with auto-research not being able to get out of local minima is one that Karpathy noted in his original blog post. While adding in the numerical optimiser helps, it doesn't completely solve the problem. Don't expect it to find solutions that require a series of independently counterproductive features but that all work together. 
+
+A further problem that I found is that, when left to its own devices, auto-research can be a bit undirected or can go back and forth over similar unproductive variants. 
+To help with this, I asked it to produce a list of ideas, write them to a file, and then explore them one by one. 
 
 ## And then miracles start to appear
 
-- My starting score at this stage was around 0.86. I set the code to run and left it while I took my son to his tennis lesson. Two hours later and the score was 0.46---almost cutting the metric in half. 
-- Some of that performance improvement turned out to be the limited training set that I was using. An expanded training set improved scores immensely. So the true improvement due to new ideas and new filter structure were still impressive but more like a 14% reduction on an unseen test set. 
+My starting score at this stage was around 0.86. I set the code to run and left it while I took my son to his tennis lesson. Two hours later and the score was 0.46---almost cutting the metric in half. 
+Some of that performance improvement turned out to be due to the limited training set that I was using when I started. When
+ I expanded the training set, the overall model improved further, as expected: more training data gave the optimiser a better
+ chance of finding a robust model. The true improvement due specifically to new ideas and filter structure was still
+ impressive, but more like a 14% reduction when tested on an unseen test set.
 
 ## Token budget issues
 
-- At this stage, the limiting factor became my ChatGPT Pro account, which while having generous limits on tokens per period, wasn't used to the attention it was getting. 
-- Looking through the log, I quickly realised how wasteful the interaction with the remote server was. There were lots of messages going back and forth about waiting for jobs to complete.
-- It was simple to fix though. I just created (with Codex) a script to package up most of the interaction, including checking that the current repo was clean, pushing to github, pulling on the remote server, and then executing the job. That approach ensured that any experiment result could be tied to a specific code version. Also, all the process around waiting for the job to run could also be scripted. 
+At this stage, the limiting factor became my ChatGPT Pro account, which while having generous limits on tokens per period, wasn't used to the attention it was getting.
+Looking through the log, I quickly realised how wasteful the interaction with the remote server was. There were lots of messages going back and forth about waiting for jobs to complete.
+It was simple to fix though. I just created (with Codex) a script to package up most of the interaction, including checking that the current repo was clean, pushing to GitHub, pulling on the remote server, and then executing the job. That approach ensured that any experiment result could be tied to a specific code version. Also, all the process around waiting for the job to run could also be scripted.
+
+If you are interested in the detail of this "run job remotely" script, here are the key ideas:
+
+1. Check that the git repo is clean (no outstanding changes, no untracked files) and stop immediately if not.
+2. Ensure the git origin is up to date and then pull to the remote server.
+3. Our remote servers use SLURM to manage job submission over clusters of computers, so rather than directly run the job, the script sends a command to SLURM to run it later.
+4. Then we wait. Since auto-research is set up as a sequential process, we need to wait until we get a result before continuing. The point here is to automate the waiting so it's not up to the agent to worry about.
+5. Finally, we extract the result from the logs. The trick here is to keep track of the job number and pull out the experiment output from the corresponding log file.
+6. By default, the agent will clutter the place with extra logs. Tell it to resist the temptation. The only output should be the score and that can be communicated simply in the output.
 
 ## You can't outsource your understanding
 
-- Karpathy recently mentioned a post on X that said "You can outsource your thinking but you can't outsource your understanding"
-- Two hours of useful Auto Research turned into many days of trying to *understand* what additions worked and why. 
-- Fortunately, Codex was able to put together a short research paper, and that really helped. 
+Karpathy recently mentioned a post on X that said "You can outsource your thinking but you can't outsource your understanding."
+Two hours of useful auto-research turned into many days of trying to *understand* what the changes were and why they worked.
+Fortunately, Codex was able to put together a short research paper, and that really helped.
 
-The agent does not become a scientist. Give it a scoring function, a contract, git, and a plain experimental loop, and it can 
- handle the repetitive middle of research: try variants, record results, and bring back surprises. 
- 
- Of course, you still have to do the 
- understanding.
+The agent does not become a scientist. Give it a scoring function, a contract, git, and a plain experimental loop, and it
+can handle the repetitive middle of research: try variants, record results, and bring back surprises.
+
+Of course, you still have to do the understanding.
+
 
 
