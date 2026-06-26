@@ -14,24 +14,24 @@ permalink: "/2026/06/16/the-miracle-of-auto-research"
 ## TL;DR
 
 Andrej Karpathy set out the idea of "Auto Research" in a [GitHub site](https://github.com/karpathy/autoresearch) and spawned a thousand forks (actually more than 12 thousand to date).
-While he was applying to the tuning of a neural network, he admitted the generality of the approach.
-The key principles of auto-research include
-  1. Have a well-defined scoring function
-  2. Limit to 5 minute runs
-  3. Constrain what the AI can modify
-  4. Keep it simple.
+He applied it to tuning a neural network, but noted that the approach was more general.
+
+The idea is simple: give an AI agent a score to improve, permission to change the code, and a tight loop for testing whether each change helped.
+I tried this on an Extended Kalman Filter for core temperature estimation; this post is about what happened.
 
 ## Opening: The miracle
 
-Auto-research is miraculous or perhaps outrageous. The miracle is that a modest script, a scoring function, and some basic tending from a human assistant can turn a Large Language Model into a tenacious and inventive researcher. 
-In Karpathy's words, it's about setting it going, going to sleep and waking up 8 hours later to find hundreds of experiments performed, the best results saved, and real performance gains produced. 
-Of course, any miracle will have doubters but the best way to dispel disbelief is to give it a try. 
+A few months ago, if I wanted to improve a research model, I would run an experiment, look at the results, think of a change, edit the code, run it again, and repeat.
 
-It's outrageous that it works as well as it does. It places a huge amount of faith in the Large Language Model (LLM) or agent. 
-Six months ago it might not have worked---the rate of progress for LLMs is that good. And that important. 
-If it's enabled by better models, it is also enabled by the rise of the command line interface (Claude Code, Codex, and the like), as we shall see.
+Auto-research changes that loop. You give an AI agent a clear goal, a way to measure success, and permission to edit the code. Then it tries an idea, runs the experiment, records the result, and decides what to try next.
 
-## What Karpathy contributed
+That is the miracle. Not that the AI suddenly becomes a scientist, but that it can keep working through the repetitive middle of research: trying variants, rejecting failures, and occasionally finding something useful.
+
+Karpathy described this as setting it going, going to sleep, and waking up eight hours later to find hundreds of experiments performed, the best results saved, and real performance gains produced.
+
+That sounds outrageous. It also works better than I expected.
+
+## How auto-research works
 
 A quick summary of the auto-research approach is as follows:
   1. define a measurable target;
@@ -149,5 +149,6 @@ can handle the repetitive middle of research: try variants, record results, and 
 
 Of course, you still have to do the understanding.
 
-
-
+It is an exciting time, but not just because tools like this now exist. The exciting part is that we are still learning how 
+ to use them well. Auto-research is one pattern; there will be others. We are collectively discovering how AI can amplify
+ serious work, and the best methods are almost certainly still ahead of us.
