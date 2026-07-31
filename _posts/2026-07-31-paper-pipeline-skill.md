@@ -12,17 +12,17 @@ tags: ["reproducibility", "markdown", "latex", "make", "agent-skills"]
 permalink: "/2026/07/31/paper-pipeline-skill/"
 ---
 
-For years, I have encouraged my research students to organise their work so that the final paper can be reproduced from scratch.
+For years, I have encouraged my research students to organise their work so that they can reproduce the final paper from scratch.
 
-The goal is to reach the point where a single command can build---or rebuild---the entire paper: starting from raw experimental data and the manuscript source, and producing a final PDF complete with the analysis, numerical results, tables and figures.
+I want them to reach the point where one command builds the paper from raw experimental data and manuscript source, then produces the final PDF with its analysis, numerical results, tables and figures.
 
-This sounds like good research practice---and it is---but it also solves a much more immediate problem: papers change.
+This is good research practice. It also solves a more immediate problem: papers change.
 
-## The hidden cost of a small correction
+## The cost of a small correction
 
-Imagine that you notice that the axis label on a graph is wrong.
+Suppose you notice that the axis label on a graph is wrong.
 
-The code change may take only a few seconds. But if the graph was previously exported and pasted into a Word document, you must also:
+The code change may take only a few seconds. But if someone exported the graph and pasted it into a Word document, you must also:
 
 1. rerun the plotting code;
 2. find the newly generated image;
@@ -30,9 +30,9 @@ The code change may take only a few seconds. But if the graph was previously exp
 4. check its size and position; and
 5. make sure you have replaced it in the latest version of the paper.
 
-That is still a relatively simple case.
+That is the simple case.
 
-Now imagine that you discover a small bug in the analysis code. Correcting it changes a reported result from, say, 98.4% to 97.9%. The change may not affect the paper’s conclusions, but the old number could appear in several places:
+Now suppose you discover a small bug in the analysis code. Correcting it changes a reported result from, say, 98.4% to 97.9%. The change may not affect the paper’s conclusions, but the old number could appear in several places:
 
 * a results table;
 * one or more graphs;
@@ -43,13 +43,13 @@ Now imagine that you discover a small bug in the analysis code. Correcting it ch
 
 Every manually copied value becomes another opportunity for the paper to contradict itself.
 
-The difficulty is not usually the correction itself. It is finding and updating every place where the result has propagated.
+The correction is easy. Finding every place where the result has spread through the paper is not.
 
 ## Treat the paper as the output of the research
 
 A paper pipeline treats the manuscript as another generated research artefact.
 
-The underlying principle is that derived material should flow from its source:
+Derived material should flow from its source:
 
 ```text
 data and configuration
@@ -77,19 +77,19 @@ The manuscript then contains:
 The best-performing model achieved an accuracy of \BestAccuracy{}.
 ```
 
-The same generated value can be used in the abstract, results section and conclusion. When the experiment changes, the value changes everywhere the next time the paper is built.
+You can use the same generated value in the abstract, results section and conclusion. When the experiment changes, the value changes everywhere the next time you build the paper.
 
-The same idea applies to tables and figures. They are outputs of scripts, not objects that are manually edited or copied into place. Generated figures should also be readable without colour alone and have source-controlled alternative text.
+The same idea applies to tables and figures. Scripts generate them; authors should not edit or copy them into place by hand. Readers should be able to understand generated figures without colour alone, and the source should contain the alternative text.
 
 ## Why Markdown?
 
-Microsoft Word provides some mechanisms for fields, references and linked content, but it is not particularly well suited to this style of computational paper production.
+Microsoft Word provides fields, references and linked content, but it does not suit this style of computational paper production.
 
-LaTeX is much better suited to it, but LaTeX can also introduce unnecessary friction. Most people quickly learn commands such as `\section` and `\subsection`, but constructing a particular type of table or adjusting an unfamiliar layout can require rather more effort.
+LaTeX suits it better, but LaTeX can add friction. Most people quickly learn commands such as `\section` and `\subsection`, but constructing a particular type of table or adjusting an unfamiliar layout can take more effort.
 
 I therefore tend to write papers in Markdown and use Pandoc to produce LaTeX and PDF.
 
-Markdown keeps the manuscript relatively easy to read and edit:
+Markdown keeps the manuscript easy to read and edit:
 
 ```markdown
 # Results
@@ -104,7 +104,7 @@ The best-performing model achieved an accuracy of
 
 The alternative text is part of the source, not an afterthought added to the final PDF. The same applies to table captions and figure captions: they should describe the result, not just name the file.
 
-LaTeX remains available where its precision is useful, without requiring the entire manuscript to be written as LaTeX source. And, of course, modern AI coding tools are now quite good at helping with the occasional obscure LaTeX requirement.
+LaTeX remains available where its precision is useful, without forcing the whole manuscript into LaTeX source. Modern AI coding tools are also quite good at helping with the occasional obscure LaTeX requirement.
 
 ## Why GNU Make?
 
@@ -114,7 +114,7 @@ For this I use GNU Make.
 
 Make is old, and it certainly has limitations. Filenames containing spaces, for example, can cause unnecessary complications. In a research repository this is rarely a serious constraint: `experiment-results.csv` generally works just as well as `Experiment Results.csv`.
 
-What Make offers is a compact and widely supported way of stating dependencies:
+Make gives you a compact and widely supported way of stating dependencies:
 
 ```make
 build/values.tex: scripts/generate_metrics.py data/results.csv
@@ -128,7 +128,7 @@ build/paper.pdf: paper.md build/values.tex \
 	pandoc paper.md --output build/paper.pdf
 ```
 
-If the results file changes, Make knows which values, figures and paper components need to be rebuilt.
+If the results file changes, Make knows which values, figures and paper components to rebuild.
 
 The objective is that this command succeeds from a clean checkout:
 
@@ -136,13 +136,13 @@ The objective is that this command succeeds from a clean checkout:
 make clean && make all
 ```
 
-That is a much stronger definition of reproducibility than merely having the analysis code somewhere in the repository.
+This gives you a much stronger definition of reproducibility than keeping the analysis code somewhere in the repository.
 
 ## Formatting numbers properly
 
-Once numbers are generated automatically, further improvements become possible.
+Generated numbers also make formatting easier.
 
-The pipeline uses the LaTeX package `siunitx` to format numbers and units consistently. This avoids manually deciding how every percentage, measurement or error value should be displayed.
+The pipeline uses the LaTeX package `siunitx` to format numbers and units consistently. This avoids hand-formatting every percentage, measurement or error value.
 
 Suppose the underlying result is:
 
@@ -150,7 +150,7 @@ Suppose the underlying result is:
 98.9828393201
 ```
 
-That does not mean the paper should display every decimal place. If the uncertainty is approximately plus or minus one percentage point, reporting `98.9828393201%` suggests a level of precision that the experiment does not support.
+That does not mean the paper should display every decimal place. If the uncertainty is about plus or minus one percentage point, reporting `98.9828393201%` suggests a level of precision that the experiment does not support.
 
 The generated value should still preserve the full number:
 
@@ -158,7 +158,7 @@ The generated value should still preserve the full number:
 \newcommand{\BestAccuracy}{\num{98.9828393201}}
 ```
 
-Then `siunitx` can decide how to print it. The rounding rule can be set once for the whole document:
+Then `siunitx` can decide how to print it. You can set the rounding rule once for the whole document:
 
 ```latex
 \sisetup{round-mode=places, round-precision=1}
@@ -183,7 +183,7 @@ Improved & 98.9828393201 \\
 \end{tabular}
 ```
 
-Uncertainty can be supplied as part of the number, and `siunitx` can switch between compact and separated forms without changing the underlying value:
+You can supply uncertainty as part of the number, and `siunitx` can switch between compact and separated forms without changing the underlying value:
 
 ```latex
 \num{98.9828393201 +- 0.73}
@@ -191,17 +191,17 @@ Uncertainty can be supplied as part of the number, and `siunitx` can switch betw
 \num{98.9828393201 +- 0.73}
 ```
 
-Automating formatting does not remove the researcher’s responsibility to decide what precision is scientifically defensible. It does, however, make it much easier to apply that decision consistently across prose, tables and figures.
+Automating formatting does not remove the researcher’s responsibility to decide what precision is scientifically defensible. It makes that decision easier to apply consistently across prose, tables and figures.
 
 ## Turning the approach into an agent skill
 
-Although I have explained this approach to research students many times, relatively few have adopted it fully.
+I have explained this approach to research students many times, but few have adopted it fully.
 
-There are understandable reasons. A student must simultaneously understand the research method, the repository structure, Make, Markdown, Pandoc, LaTeX conventions and the distinction between source files and generated files. Even when each part is fairly simple, the combined workflow can appear daunting.
+The reasons are practical. A student must learn the research method, the repository structure, Make, Markdown, Pandoc, LaTeX conventions and the distinction between source files and generated files. Each part may be simple; the combined workflow can still feel like too much.
 
-I therefore captured the approach as an installable agent skill called **paper-pipeline**.
+I captured the approach as an installable agent skill called **paper-pipeline**.
 
-The skill tells an AI coding agent how a reproducible paper repository should be organised and, importantly, how it should behave when modifying one. Its rules include:
+The skill tells an AI coding agent how to organise a reproducible paper repository and how to modify one. Its rules include:
 
 * do not hard-code numerical results in prose;
 * generate reported values from scripts;
@@ -210,7 +210,7 @@ The skill tells an AI coding agent how a reproducible paper repository should be
 * inspect the Makefile before making changes;
 * edit source data, configuration or generation scripts rather than generated files;
 * run the relevant Make target after a change; and
-* verify that the complete paper can be rebuilt.
+* verify that the complete paper rebuilds.
 
 The repository is available at:
 
@@ -218,7 +218,7 @@ The repository is available at:
 https://github.com/jbrusey/paper-pipeline
 ```
 
-In an agent environment that supports installing skills from a URL, installation can be as simple as:
+In an agent environment that supports installing skills from a URL, install it with:
 
 ```text
 install https://github.com/jbrusey/paper-pipeline
@@ -232,11 +232,11 @@ skills/paper-pipeline/SKILL.md
 
 ## Some practical limits
 
-A pipeline does not make the whole research process frictionless. It removes one class of manual copying errors, but a few details still need deliberate handling.
+A pipeline does not make research frictionless. It removes one class of manual copying errors, but a few details still need deliberate handling.
 
 ### Environments and dependencies
 
-Make tracks whether files are out of date. It does not know which Python version you used, which system libraries Pandoc needed or which LaTeX packages happened to be installed on your laptop.
+Make tracks whether files are out of date. It does not know which Python version you used, which system libraries Pandoc needed or which LaTeX packages your laptop had installed.
 
 For a short-lived student project, a `requirements.txt`, `uv.lock`, `environment.yml` or `pixi.lock` file may be enough. For work that must build years later or on another institution’s machine, a container such as Docker can capture more of the operating environment.
 
@@ -248,7 +248,7 @@ make all
 
 ### Long-running computations
 
-The command `make clean && make all` should be possible, but that does not mean every intermediate file must be regenerated before every draft.
+The command `make clean && make all` should work, but you do not need to regenerate every intermediate file before every draft.
 
 If training a model or running a simulation takes days, treat its output as a source artefact for the paper pipeline. Save a documented summary file, such as a CSV of experimental results, and have the paper pipeline turn that summary into values, tables and figures.
 
@@ -256,7 +256,7 @@ That keeps the manuscript build fast while preserving provenance. Heavy computat
 
 ### Collaborating with Word or Overleaf users
 
-Co-authors may still want Track Changes in Word, comments in Google Docs or edits in Overleaf. A Markdown and Make workflow does not remove that social fact.
+Co-authors may still want Track Changes in Word, comments in Google Docs or edits in Overleaf. A Markdown and Make workflow does not remove that.
 
 One workable pattern is to keep the authoritative manuscript in the pipeline, then export review copies when needed:
 
@@ -266,35 +266,35 @@ pandoc paper.md --output build/paper.docx
 
 The lead author can fold comments and suggested edits back into the source. For LaTeX-heavy collaborations, Overleaf can work as the editing front end while scripts continue to generate the values, tables and figures that the paper inputs.
 
-## The surprising result
+## What changed with the skill
 
-The most interesting result was not that the skill allowed an AI agent to reproduce my preferred workflow.
+The skill did more than let an AI agent reproduce my preferred workflow.
 
-It was that the skill communicated the workflow to a student much more effectively than my previous explanations had.
+It explained the workflow to a student better than my previous explanations had.
 
-The first student to whom I gave the skill was immediately able to use it to construct the complete pipeline and return a working paper remarkably quickly. Values, tables, figures and captions were generated correctly, and the paper could be rebuilt through the pipeline.
+The first student I gave it to used it to construct the complete pipeline and return a working paper quickly. The agent generated values, tables, figures and captions correctly, and the student could rebuild the paper through the pipeline.
 
-This suggests a broader role for agent skills.
+That points to another use for agent skills.
 
-We often think of skills as a way of making an AI tool repeat a task reliably. But they can also encode expert working practices and make those practices available to other people at the point where the work is being done.
+We often treat skills as a way to make an AI tool repeat a task reliably. They can also encode expert working practices and put them in front of people while they work.
 
-A written guide explains what someone ought to do. An agent skill can help them actually do it.
+A written guide explains what someone ought to do. An agent skill can help them do it.
 
-For research supervision, that distinction may be important. Considerable supervisory time is spent explaining not only the intellectual content of research, but also the practical craft surrounding it: how to organise experiments, preserve provenance, structure repositories, validate results and prepare papers.
+Research supervisors spend a lot of time teaching craft: how to organise experiments, preserve provenance, structure repositories, validate results and prepare papers.
 
-Encoding some of that craft into skills does not replace supervision. It gives students immediate access to a concrete and executable version of the advice.
+Encoding some of that craft into skills does not replace supervision. It gives students a concrete and executable version of the advice.
 
 ## Reproducibility as everyday convenience
 
-Reproducibility is often presented mainly as an obligation to future readers, reviewers or researchers.
+People often present reproducibility as an obligation to future readers, reviewers or researchers.
 
-That is important, but it can make reproducibility seem like additional work undertaken for somebody else.
+That matters, but it can make reproducibility sound like extra work done for somebody else.
 
-A paper pipeline shows the more immediate benefit. Reproducibility reduces the cost of changing your own paper. It makes correcting mistakes safer, rerunning experiments easier and responding to reviewers less tedious. It reduces the chance that the abstract contains an obsolete result or that a graph no longer agrees with its accompanying table.
+A paper pipeline gives you a more immediate benefit. Reproducibility reduces the cost of changing your own paper. It makes correcting mistakes safer, rerunning experiments easier and responding to reviewers less tedious. It reduces the chance that the abstract contains an obsolete result or that a graph no longer agrees with its accompanying table.
 
-The repository becomes not merely an archive of what was done, but an executable account of how the paper was produced.
+The repository becomes an executable account of how you produced the paper.
 
-That is useful to the scientific community. It is also extremely useful to the person trying to finish the paper.
+That helps the scientific community. It also helps the person trying to finish the paper.
 
 ## References
 
