@@ -14,7 +14,7 @@ permalink: "/2026/07/31/paper-pipeline-skill/"
 
 For years, I have encouraged my research students to organise their work so that the final paper can be reproduced from scratch.
 
-The ideal is simple: starting with the source data and code, it should be possible to regenerate the experimental results, numerical values, tables and figures, and then build the final paper without manually copying anything between applications.
+The goal is to reach the point where a single command can build---or rebuild---the entire paper: starting from raw experimental data and the manuscript source, and producing a final PDF complete with the analysis, numerical results, tables and figures.
 
 This sounds like good research practice---and it is---but it also solves a much more immediate problem: papers change.
 
