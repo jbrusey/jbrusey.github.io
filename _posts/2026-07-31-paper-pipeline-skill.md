@@ -14,9 +14,9 @@ permalink: "/2026/07/31/paper-pipeline-skill/"
 
 For years, I have encouraged my research students to organise their work so that they can reproduce the final paper from scratch.
 
-I want them to reach the point where one command builds the paper from raw experimental data and manuscript source, then produces the final PDF with its analysis, numerical results, tables and figures.
+I want them to reach the point where one command takes the raw experimental data and manuscript source and produces the final PDF, complete with any statistical analysis, numerical results, tables and figures.
 
-This is good research practice. It also solves a more immediate problem: papers change.
+This matters not only for reproducibility, but because papers are rarely finished in a straight line. Results change, errors are found, figures need revising, and every change has to be reflected consistently throughout the manuscript.
 
 ## The cost of a small correction
 
