@@ -295,3 +295,10 @@ A paper pipeline shows the more immediate benefit. Reproducibility reduces the c
 The repository becomes not merely an archive of what was done, but an executable account of how the paper was produced.
 
 That is useful to the scientific community. It is also extremely useful to the person trying to finish the paper.
+
+## References
+
+The Turing Way has useful practical guidance on reproducible research:
+
+* [Reproducible Research](https://book.the-turing-way.org/reproducible-research/reproducible-research/)
+* [Make for reproducible research](https://book.the-turing-way.org/reproducible-research/make/)
