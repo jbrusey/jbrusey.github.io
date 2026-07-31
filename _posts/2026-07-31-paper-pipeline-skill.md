@@ -16,7 +16,7 @@ For years, I have encouraged my research students to organise their work so that
 
 The ideal is simple: starting with the source data and code, it should be possible to regenerate the experimental results, numerical values, tables and figures, and then build the final paper without manually copying anything between applications.
 
-This sounds like good research practice—--and it is--—but it also solves a much more immediate problem: papers change.
+This sounds like good research practice---and it is---but it also solves a much more immediate problem: papers change.
 
 ## The hidden cost of a small correction
 
@@ -68,7 +68,7 @@ Rather than typing a result such as “98%” directly into the manuscript, a sc
 In LaTeX, for example, the script might generate:
 
 ```latex
-\newcommand{\BestAccuracy}{\SI{98.9828393201}{\percent}}
+\newcommand{\BestAccuracy}{\qty{98.9828393201}{\percent}}
 ```
 
 The manuscript then contains:
