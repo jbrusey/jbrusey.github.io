@@ -1,4 +1,16 @@
-# From Results to Paper: Building a Reproducible Paper Pipeline
+---
+layout: single
+author_profile: true
+read_time: true
+comments: true
+share: true
+related: true
+title: "From Results to Paper: Building a Reproducible Paper Pipeline"
+date: 2026-07-31 00:00:00 +0000
+categories: ["research"]
+tags: ["reproducibility", "markdown", "latex", "make", "agent-skills"]
+permalink: "/2026/07/31/paper-pipeline-skill/"
+---
 
 For years, I have encouraged my research students to organise their work so that the final paper can be reproduced from scratch.
 
