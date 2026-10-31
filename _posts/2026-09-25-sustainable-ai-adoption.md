@@ -1,5 +1,10 @@
 ---
-layout: post
+layout: single
+author_profile: true
+read_time: true
+comments: true
+share: true
+related: true
 title: "Building sustainable AI adoption"
 date: 2026-09-25 19:37:00 +0000
 categories: []
