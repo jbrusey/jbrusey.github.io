@@ -5,8 +5,6 @@ author_profile: true
 permalink: /about/
 ---
 
-# About
-
 James Brusey is Professor of Computer Science at the Centre for
 Computational Science and Mathematical Methods at Coventry University
 and theme lead for Human-centred Reinforcement Learning.
