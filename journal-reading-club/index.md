@@ -10,7 +10,7 @@ permalink: /journal-reading-club/
 The next meeting will be on **Wednesday 11th November 2026** and we will
 be reading the following paper:
 
-Agarwal, R., Schwarzer, M., Castro, P. S., Courville, A., & Bellemare, M. G. (2022). Deep Reinforcement Learning at the Edge of the Statistical Precipice (arXiv:2108.13264). arXiv. https://doi.org/10.48550/arXiv.2108.13264
+Agarwal, R., Schwarzer, M., Castro, P. S., Courville, A., & Bellemare, M. G. (2022). Deep Reinforcement Learning at the Edge of the Statistical Precipice (arXiv:2108.13264). [arXiv.](https://doi.org/10.48550/arXiv.2108.13264)
 
 Teams join link is
 [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MmYwZTIwZmUtODA5Ny00ODZiLTg4MWQtMDQ3ZTU0ODNiOTdj%40thread.v2/0?context=%7b%22Tid%22%3a%224b18ab9a-3765-4abe-ac7c-0e0d398afd4f%22%2c%22Oid%22%3a%22a1b6f125-52fd-4586-90e4-b11954f89da9%22%7d)
