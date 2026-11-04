@@ -9,4 +9,5 @@ permalink: /publications/
 
 Selected publications will be listed here.
 
-For now, add links to Google Scholar, ORCID, Coventry profile, or DBLP as appropriate.
+You can also see my [Google Scholar page](https://scholar.google.com/citations?user=xBZJCjkAAAAJ&hl=en)
+

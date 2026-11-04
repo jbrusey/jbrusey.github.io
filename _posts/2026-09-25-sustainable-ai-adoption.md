@@ -11,18 +11,21 @@ categories: []
 tags: []
 permalink: "/2026/09/25/sustainable-ai-adoption/"
 ---
-Sustainable AI adoption depends on people who can understand, evaluate, own and maintain a useful system.
 
-Coventry University’s AI Adoption Lab helps teams solve live organisational problems.
-We define the problem with them, test AI against their current approach and build the skills they need to continue after our involvement ends.
+The very first thing we must think about when adopting AI (or possibly any new technology) is *sustainability*. 
+By this, I mean that we should favour approaches that cause teams to end up being able to understand, evaluate, maintain, and most importantly *own* the resulting systems and processes. 
 
-Our Early Student Support project applies this method with Coventry’s Student Experience team.
-We want to learn whether institutional data can help colleagues identify students who may need support.
-Earlier identification could give staff more time to act before a student’s problems grow.
+Coventry University’s AI Adoption Lab, which I direct, helps teams solve live organisational problems.
+Our Adoption Lab experts define the problem with them, help them build the AI solution, make sure they can evaluate against their current approach and build the skills they need to continue after our involvement ends.
 
-Education is Coventry’s core business.
+One example project is the Early Student Support Project (code name Evolve). 
+We are working with Coventry’s Student Experience team to see if we can deliver a better solution than they have had in the past. 
+The project is about providing support to those students that need it in order to reduce the number of students not passing a module.
+This is an important project -- when a student fails to pass, it's not just a crisis for the student but can also harm the university as a whole. 
+
+Education is Coventry University's core business.
 Timely support can improve a student’s experience and reduce pressure on staff.
-Through this project, we can test our adoption method in an area that affects students, their families and the University.
+Through AI Adoption, we hope to produce a significant positive benefit to the students who need it most. 
 
 ### Give the operational team ownership
 
