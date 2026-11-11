@@ -7,10 +7,11 @@ permalink: /journal-reading-club/
 
 # Next meeting
 
-The next meeting will be on **Wednesday 11th November 2026** and we will
+The next meeting will be on **Wednesday 18th November 2026** and we will
 be reading the following paper:
 
-Agarwal, R., Schwarzer, M., Castro, P. S., Courville, A., & Bellemare, M. G. (2022). Deep Reinforcement Learning at the Edge of the Statistical Precipice (arXiv:2108.13264). [arXiv.](https://doi.org/10.48550/arXiv.2108.13264)
+
+Capobianco, R., van Seijen, H., Bard, N. D., Burch, N., Davelouis, F., Devlic, A., Du, Y., Durugkar, I., Gangapurwala, S., Hernandez, D., Holland, Z., Jain, S., Kawamoto, K., Kumaraswamy, R., MacAlpine, P., Morrill, R., Oller, D., Riccio, F., Saran, A., … Wurman, P. R. (n.d.). [Coachable Agents for Interactive Gameplay.](https://openreview.net/forum?id=GMPy1cDgml)
 
 Teams join link is
 [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MmYwZTIwZmUtODA5Ny00ODZiLTg4MWQtMDQ3ZTU0ODNiOTdj%40thread.v2/0?context=%7b%22Tid%22%3a%224b18ab9a-3765-4abe-ac7c-0e0d398afd4f%22%2c%22Oid%22%3a%22a1b6f125-52fd-4586-90e4-b11954f89da9%22%7d)
@@ -56,6 +57,13 @@ Yes there is! It's
 [here](https://teams.microsoft.com/l/team/19%3ARgtue_01xh-2pKz0B_b5Wy02cFYaRRXbVbgPIRLTEJA1%40thread.tacv2/conversations?groupId=b8cb7489-de49-4fa7-ab9b-626df41b9f98&tenantId=4b18ab9a-3765-4abe-ac7c-0e0d398afd4f).
 
 # 2026
+
+## November 
+
+### RLiable
+
+Agarwal, R., Schwarzer, M., Castro, P. S., Courville, A., & Bellemare, M. G. (2022). Deep Reinforcement Learning at the Edge of the Statistical Precipice (arXiv:2108.13264). [arXiv.](https://doi.org/10.48550/arXiv.2108.13264)
+
 
 ## October
 
