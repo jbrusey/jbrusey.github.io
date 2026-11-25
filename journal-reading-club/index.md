@@ -7,10 +7,10 @@ permalink: /journal-reading-club/
 
 # Next meeting
 
-The next meeting will be on **Wednesday 25th November 2026** and we will
+The next meeting will be on **Wednesday 5th December 2026** and we will
 be reading the following paper:
 
-Zhou, A., Yan, K., Shlapentokh-Rothman, M., Wang, H., & Wang, Y.-X. (2024). Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models (arXiv:2310.04406). arXiv. <https://doi.org/10.48550/arXiv.2310.04406>
+Gong, S., Chen, Q., Chen, B., Zhang, W., Gao, Y., & Peng, X. (2026). AutoHIL: LLM-Based ECU Functional Test Generation through Domain Knowledge Augmentation. Proc. ACM Softw. Eng., 3(ISSTA), ISSTA064:1470-ISSTA064:1491. <https://doi.org/10.1145/3832155>
 
 
 Teams join link is
@@ -59,6 +59,10 @@ Yes there is! It's
 # 2026
 
 ## November 
+
+### Language Agent Tree Search
+
+Zhou, A., Yan, K., Shlapentokh-Rothman, M., Wang, H., & Wang, Y.-X. (2024). Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models (arXiv:2310.04406). arXiv. <https://doi.org/10.48550/arXiv.2310.04406>
 
 ### Sony paper on learning styles
 
