@@ -7,11 +7,11 @@ permalink: /journal-reading-club/
 
 # Next meeting
 
-The next meeting will be on **Wednesday 18th November 2026** and we will
+The next meeting will be on **Wednesday 25th November 2026** and we will
 be reading the following paper:
 
+Zhou, A., Yan, K., Shlapentokh-Rothman, M., Wang, H., & Wang, Y.-X. (2024). Language Agent Tree Search Unifies Reasoning Acting and Planning in Language Models (arXiv:2310.04406). arXiv. <https://doi.org/10.48550/arXiv.2310.04406>
 
-Capobianco, R., van Seijen, H., Bard, N. D., Burch, N., Davelouis, F., Devlic, A., Du, Y., Durugkar, I., Gangapurwala, S., Hernandez, D., Holland, Z., Jain, S., Kawamoto, K., Kumaraswamy, R., MacAlpine, P., Morrill, R., Oller, D., Riccio, F., Saran, A., … Wurman, P. R. (n.d.). [Coachable Agents for Interactive Gameplay.](https://openreview.net/forum?id=GMPy1cDgml)
 
 Teams join link is
 [here](https://teams.microsoft.com/l/meetup-join/19%3ameeting_MmYwZTIwZmUtODA5Ny00ODZiLTg4MWQtMDQ3ZTU0ODNiOTdj%40thread.v2/0?context=%7b%22Tid%22%3a%224b18ab9a-3765-4abe-ac7c-0e0d398afd4f%22%2c%22Oid%22%3a%22a1b6f125-52fd-4586-90e4-b11954f89da9%22%7d)
@@ -59,6 +59,10 @@ Yes there is! It's
 # 2026
 
 ## November 
+
+### Sony paper on learning styles
+
+Capobianco, R., van Seijen, H., Bard, N. D., Burch, N., Davelouis, F., Devlic, A., Du, Y., Durugkar, I., Gangapurwala, S., Hernandez, D., Holland, Z., Jain, S., Kawamoto, K., Kumaraswamy, R., MacAlpine, P., Morrill, R., Oller, D., Riccio, F., Saran, A., … Wurman, P. R. (n.d.). [Coachable Agents for Interactive Gameplay.](https://openreview.net/forum?id=GMPy1cDgml)
 
 ### RLiable
 
