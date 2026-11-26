@@ -19,6 +19,7 @@ I work on artificial intelligence, cyber-physical systems, machine learning, sen
 - [Projects](/projects/)
 - [Publications](/publications/)
 - [Teaching](/teaching/)
+- [Prospective PhDs](/phds/)
 - [About](/about/)
 
 ## Recent posts
